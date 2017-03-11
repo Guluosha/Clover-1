@@ -4294,4 +4294,3 @@ NSVGpath* nsvgDuplicatePath(NSVGpath* p)
   return res;
 }
  */
-
