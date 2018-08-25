@@ -2186,11 +2186,6 @@ RefitMain (IN EFI_HANDLE           ImageHandle,
   LoadDrivers();
   //DBG("LoadDrivers() end\n");
 
-/*  if (!gFirmwareClover &&
-      !gDriversFlags.EmuVariableLoaded) {
-    GetSmcKeys(FALSE);  // later we can get here SMC information
-  } */
-
   Status = gBS->LocateProtocol (&gEmuVariableControlProtocolGuid, NULL, (VOID**)&gEmuVariableControl);
   if (EFI_ERROR(Status)) {
     gEmuVariableControl = NULL;
@@ -2446,7 +2441,6 @@ RefitMain (IN EFI_HANDLE           ImageHandle,
         }
       }
     }
-    GetSmcKeys(TRUE);
 
     // Add custom entries
     AddCustomEntries();
