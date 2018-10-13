@@ -14,6 +14,7 @@ matrix:
    - os: linux
      dist: xenial
      compiler: clang
+     python: "3.7"
      env:
       - NUM_CPUS=$(nproc)
       - TOOLCHAIN="CLANG38"
@@ -38,6 +39,7 @@ matrix:
    - os: linux
      dist: xenial
      compiler: gcc
+     python: "3.7"
      env:
       - NUM_CPUS=$(nproc)
       - TOOLCHAIN="GCC5"
@@ -57,12 +59,12 @@ matrix:
 
 install:
  - git clone https://github.com/tianocore/edk2 ../edk2 --depth 1
- - make -C ../edk2/BaseTools -j $NUM_CPUS -s
-
-before_script:
  - cd ../edk2
  - source edksetup.sh
+ - make -C BaseTools -j $NUM_CPUS -s
  - export PACKAGES_PATH="$(pwd)/.."
+
+before_script:
  - cd $TRAVIS_BUILD_DIR
  - ./gen-version.sh $TOOLCHAIN
 
